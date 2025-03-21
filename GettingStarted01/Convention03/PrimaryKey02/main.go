@@ -1,4 +1,4 @@
-package PrimaryKey
+package PrimaryKey02
 
 // User GORM 默认使用 ID 作为主键名。
 type User struct {
