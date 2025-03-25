@@ -130,3 +130,19 @@ for rows.Next() {
 }
 ```
 
+
+# 扫描`sql.Rows`数据到模型
+
+```go
+rows, err := db.Model(&User{}).Where("name = ?", "jinzhu").Select("name, age, email").Rows() // (*sql.Rows, error)
+defer rows.Close()
+
+for rows.Next() {
+  var user User
+  // ScanRows 扫描一行到 user 模型
+  db.ScanRows(rows, &user)
+
+  // do something
+}
+```
+
